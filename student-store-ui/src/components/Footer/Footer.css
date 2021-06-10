@@ -1,0 +1,68 @@
+.Footer {
+  width: 100%;
+  max-width: 100vw;
+  height: 350px;
+  background: var(--pure-white);
+}
+
+.Footer .content {
+  max-width: var(--content-width);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  background: var(--pure-white);
+}
+.Footer .content .top {
+  flex: 1;
+  padding-top: 40px;
+}
+.Footer .content .top .links {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+.Footer .content .top .links .link-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.Footer .content .top .links .link-column h4 {
+  margin-bottom: 10px;
+}
+.Footer .content .top .links .link-column ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+.Footer .content .top .links .link-column ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--font-light);
+  margin-top: 10px;
+}
+.Footer .content .top .links .link-column ul li svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.Footer .content .bottom {
+  border-top: solid 1px var(--border-color);
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+.Footer .content .bottom .payment-options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+}

@@ -1,0 +1,134 @@
+.Orders {
+  width: 100%;
+  max-width: 100vw;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.Orders .banner {
+  width: 100%;
+  max-width: 100vw;
+  height: 130px;
+  background: var(--dark-blue);
+  display: flex;
+  align-items: center;
+}
+.Orders .banner .content {
+  max-width: var(--content-width);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  background: var(--dark-blue);
+}
+.Orders .banner .content h2 {
+  color: white;
+}
+.Orders .content {
+  max-width: var(--content-width);
+  width: 100%;
+  margin: 0 auto;
+}
+.Orders .content .order-list {
+  display: flex;
+  flex-direction: column;
+  background: var(--pure-white);
+  border: solid 1px var(--border-color);
+  border-radius: 4px;
+  width: 100%;
+  margin: 20px 0;
+  padding: 20px 40px;
+  min-height: 200px;
+}
+.Orders .order-list-header {
+  display: flex;
+  height: 50px;
+  background: var(--dark-blue);
+  margin-bottom: 15px;
+}
+.Orders .order-list-header span {
+  flex: 1;
+  color: var(--pure-white);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 15px;
+}
+.Orders .order-list-header span.center {
+  display: flex;
+  justify-content: center;
+}
+.Orders .flex-2 {
+  flex: 2;
+}
+.Orders .order-item {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+  border-bottom: solid 1px var(--border-color);
+}
+.Orders .order-item h3 {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 10px;
+}
+.Orders .order-item .order-details {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+}
+.Orders .order-item .order-details .line-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  height: 30px;
+}
+.Orders .order-item .order-details .line-item span {
+  /* margin-left: 15px; */
+  flex: 1;
+}
+.Orders .order-item .order-details .line-item span.center {
+  display: flex;
+  justify-content: center;
+}
+
+.Orders .receipt {
+  display: flex;
+  flex-direction: column;
+  background: var(--pure-white);
+  /* border: solid 1px var(--border-color); */
+  border-radius: 4px;
+  width: 100%;
+  /* margin: 20px 0; */
+  /* padding: 20px 40px; */
+}
+.Orders .receipt span {
+  flex: 1;
+}
+.Orders .receipt span.center {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+}
+.Orders .receipt .receipt-subtotal,
+.Orders .receipt .receipt-taxes,
+.Orders .receipt .receipt-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* margin: 5px 0; */
+  padding: 5px 0;
+}
+.Orders .receipt .receipt-total {
+  border-top: solid 1px var(--border-color);
+}
+.Orders .receipt .label {
+  font-weight: 600;
+}
