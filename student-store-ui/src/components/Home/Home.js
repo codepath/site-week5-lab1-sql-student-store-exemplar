@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import SubNavbar from "../SubNavbar/SubNavbar"
 import Hero from "../Hero/Hero"
@@ -22,44 +22,25 @@ export default function Home({
   getQuantityOfItemInCart,
 }) {
   const location = useLocation()
-  // const [prevHash, setPrevHash] = useState(null)
-
-  console.log({ location })
 
   useEffect(() => {
+    // some silly react router magic to get hash links to work
     if (location.hash) {
-      // if (prevHash !== location.hash) {
       const el = document.querySelector(location.hash)
       if (el) {
         el.scrollIntoView({ behavior: "smooth" })
       }
-      // }
-
-      // setPrevHash(location.hash)
     }
-
-    return () => {
-      // setPrevHash(null)
-    }
-    // if (location.pathname.indexOf("#") !== -1) {
-    //   const hash = location.pathname.split("#")[1]
-
-    //   if (hash !== prevHash) {
-    //     const el = document.querySelector(`#${hash}`)
-    //     el.scrollIntoView({ behavior: "smooth" })
-    //   }
-
-    //   setPrevHash(hash)
-    // }
   }, [location.hash])
 
-  // useEffect(() => {
-  //   console.log("Mount")
-  //   return () => {
-  //     console.log("Unmount")
-  //     // setPrevHash(null)
-  //   }
-  // }, [])
+  const productsByCategory =
+    Boolean(activeCategory) && activeCategory.toLowerCase() !== "all categories"
+      ? products.filter((p) => p.category === activeCategory.toLowerCase())
+      : products
+
+  const productsToShow = Boolean(searchInputValue)
+    ? productsByCategory.filter((p) => p.name.toLowerCase().indexOf(searchInputValue))
+    : productsByCategory
 
   return (
     <div className="Home">
@@ -74,7 +55,7 @@ export default function Home({
       <Hero />
       <About />
       <ProductGrid
-        products={products}
+        products={productsToShow}
         isFetching={isFetching}
         addToCart={addToCart}
         removeFromCart={removeFromCart}

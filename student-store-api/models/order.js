@@ -1,3 +1,4 @@
+const { BadRequestError } = require("../utils/errors")
 const db = require("../db")
 
 class Order {
@@ -19,6 +20,13 @@ class Order {
   }
 
   static async createOrder({ order, user }) {
+    if (!order || !Object.keys(order).length) {
+      throw new BadRequestError("No order info provided")
+    }
+    if (!user) {
+      throw new BadRequestError("No user provided")
+    }
+
     // create a new order
     const orderResult = await db.query(
       `

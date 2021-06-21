@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import apiClient from "../../services/apiClient"
-import Tokens from "../../services/tokens"
+import axios from "axios"
 import Home from "../Home/Home"
 import Signup from "../Signup/Signup"
 import Login from "../Login/Login"
@@ -35,19 +34,19 @@ export default function App() {
     setIsCheckingOut(true)
 
     try {
-      const { data, error } = await apiClient.checkout(cart)
-      if (data?.order) {
-        setOrders((o) => [...data.order, ...o])
+      const res = await axios.post("http://localhost:3001/orders", { order: cart })
+      if (res?.data?.order) {
+        setOrders((o) => [...res.data.order, ...o])
         setIsCheckingOut(false)
         setCart({})
-        return data.order
-      }
-      if (error) {
-        setError(error)
+        return res.data.order
+      } else {
+        setError("Error checking out.")
       }
     } catch (err) {
-      console.log({ err })
-      setError(err)
+      console.log(err)
+      const message = err?.response?.data?.error?.message
+      setError(message ?? String(err))
     } finally {
       setIsCheckingOut(false)
     }
@@ -56,33 +55,24 @@ export default function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       setIsFetching(true)
-      const { data, error } = await apiClient.listProducts()
-      if (data?.products) {
-        setProducts(data.products)
-      }
-      if (error) {
-        setError(error)
-      }
-      setIsFetching(false)
-    }
 
-    const initializeUser = async () => {
-      // check for logged in user
-      const token = Tokens.getToken()
-      if (token) {
-        apiClient.setToken(token)
-
-        // fetch user data if needed
-        const res = await apiClient.fetchUser()
-        if (res?.data?.user) {
-          setUser(res.data.user)
-          setOrders(res.data.orders ?? [])
+      try {
+        const res = await axios.get("http://localhost:3001/store")
+        if (res?.data?.products) {
+          setProducts(res.data.products)
+        } else {
+          setError("Error fetching products.")
         }
+      } catch (err) {
+        console.log(err)
+        const message = err?.response?.data?.error?.message
+        setError(message ?? String(err))
+      } finally {
+        setIsFetching(false)
       }
     }
 
     fetchProducts()
-    initializeUser()
   }, [])
 
   return (

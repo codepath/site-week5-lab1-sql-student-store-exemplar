@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
-import apiClient from "../../services/apiClient"
-import Tokens from "../../services/tokens"
+import axios from "axios"
 import "./Signup.css"
 
 export default function Signup({ user, setUser }) {
@@ -56,21 +55,20 @@ export default function Signup({ user, setUser }) {
     }
 
     try {
-      const { data, error } = await apiClient.signupUser({
+      const res = await axios.post("http://localhost:3001/auth/register", {
         name: form.name,
         email: form.email,
         password: form.password,
       })
-      if (data?.token) {
-        Tokens.setToken(data.token)
-        apiClient.setToken(data.token)
-        setUser(data.user)
+      if (res?.data?.user) {
+        setUser(res.data.user)
       } else {
-        setErrors((e) => ({ ...e, form: String(error) }))
+        setErrors((e) => ({ ...e, form: "Something went wrong with registration" }))
       }
     } catch (err) {
       console.log(err)
-      setErrors((e) => ({ ...e, form: "Something went wrong with registration" }))
+      const message = err?.response?.data?.error?.message
+      setErrors((e) => ({ ...e, form: message ?? String(err) }))
     } finally {
       setIsProcessing(false)
     }

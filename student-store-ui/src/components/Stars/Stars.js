@@ -2,34 +2,6 @@ import { Fragment } from "react"
 import IconStar from "../Icons/Star"
 import IconStarHalf from "../Icons/StarHalf"
 import "./Stars.css"
-// import { IconStar, IconStarHalf, Spacer } from "components"
-// import { useCreateStars } from "hooks/ui/useCreateStars"
-// import styled from "styled-components"
-
-// const StarsWrapper = styled.div<{ $readOnly?: boolean; $size?: "sm" | "md" | "lg" }>`
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   height: 40px;
-
-//   & svg {
-//     cursor: ${(props) => (props.$readOnly ? "initial" : "pointer")};
-//     ${(props) =>
-//       props.$size === "sm"
-//         ? `
-//       height: 24px;
-//       width: 24px;
-//     `
-//         : ``}
-//     ${(props) =>
-//       props.$size === "lg"
-//         ? `
-//       height: 48px;
-//       width: 48px;
-//     `
-//         : ``}
-//   }
-// `
 
 const createStars = ({ numStars, max, epsilon = 0.2 }) => {
   return new Array(max).fill(0).map((_, i) => {

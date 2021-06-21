@@ -5,8 +5,6 @@ import "./NotFound.css"
 
 export default function NotFound({
   user,
-  orders,
-  products,
   activeCategory,
   setActiveCategory,
   handleOnSearchInputChange,
@@ -22,11 +20,6 @@ export default function NotFound({
         handleOnSearchInputChange={handleOnSearchInputChange}
         searchInputValue={searchInputValue}
       />
-      {/* <div className="banner">
-        <div className="content">
-          <h2>Orders</h2>
-        </div>
-      </div> */}
 
       <div className="cta">
         <h1>404</h1>

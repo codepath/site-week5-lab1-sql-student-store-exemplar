@@ -1,7 +1,6 @@
 import SubNavbar from "../SubNavbar/SubNavbar"
 import Footer from "../Footer/Footer"
 import Navbar from "../Navbar/Navbar"
-import codepath from "../../assets/codepath.svg"
 import { formatPrice } from "../../utils/format"
 import {
   calculateOrderSubtotal,
@@ -24,7 +23,6 @@ const groupOrderDetailsByOrderId = (orderDetails) => {
 export default function Orders({
   user,
   orders,
-  // products,
   activeCategory,
   setActiveCategory,
   handleOnSearchInputChange,

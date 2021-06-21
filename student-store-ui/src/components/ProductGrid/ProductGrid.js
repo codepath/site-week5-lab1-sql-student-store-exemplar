@@ -1,7 +1,7 @@
 import ProductCard from "../ProductCard/ProductCard"
 import "./ProductGrid.css"
 
-export default function ProductGrid({ products = [], addToCart, removeFromCart, getQuantityOfItemInCart }) {
+export default function ProductGrid({ addToCart, removeFromCart, getQuantityOfItemInCart, products = [] }) {
   return (
     <div id="Buy" className="ProductGrid">
       <div className="content">

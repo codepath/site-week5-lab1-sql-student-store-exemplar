@@ -7,11 +7,11 @@
 export const removeFromCart = (cart, item) => {
   const newCart = {
     ...cart,
-    [item.id]: cart[item.id] - 1,
+    [item.name]: cart[item.name] - 1,
   }
 
-  if (newCart[item.id] <= 0) {
-    delete newCart[item.id]
+  if (!newCart[item.name]) {
+    delete newCart[item.name]
   }
 
   return newCart
