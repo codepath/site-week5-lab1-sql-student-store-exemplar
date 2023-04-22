@@ -15,10 +15,13 @@
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
-    "express": "^5.0.0-alpha.8",
-    "jsonwebtoken": "^8.5.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7",
     "pg": "^8.6.0"
+  },
+  "engines": {
+    "node": ">=18.16.0"
   }
 }
