@@ -1,5 +1,6 @@
-# Student Store Pt2 Exemplar Project
-Exemplar project for Student Store Pt2 incorporating PERN Stack
+# SQL Student Store Exemplar Project
+
+Exemplar project for SQL Student Store incorporating PERN Stack
 
 For this lab, interns will be expanding on the Week 2 Student Store Assignment.
 
